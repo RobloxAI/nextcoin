@@ -13,6 +13,46 @@ function showOptions() {
     modal.style.display = 'flex';
 }
 
+function showHelp() {
+    const modal = document.getElementById('help-modal');
+    modal.style.display = 'flex';
+}
+
+function showVerification() {
+    const helpModal = document.getElementById('help-modal');
+    const verificationModal = document.getElementById('verification-tasks-modal');
+    helpModal.style.display = 'none';
+    verificationModal.style.display = 'flex';
+}
+
+function updateTaskProgress() {
+    const checkboxes = document.getElementsByClassName('task-checkbox');
+    const completeButton = document.getElementById('complete-tasks-button');
+    let checkedCount = 0;
+    
+    for (let checkbox of checkboxes) {
+        if (checkbox.checked) {
+            checkedCount++;
+        }
+    }
+    
+    completeButton.disabled = checkedCount < 2;
+}
+
+function completeVerification() {
+    const verificationModal = document.getElementById('verification-tasks-modal');
+    const completeModal = document.getElementById('verification-complete-modal');
+    verificationModal.style.display = 'none';
+    completeModal.style.display = 'flex';
+}
+
+function closeAllModals() {
+    const modals = document.getElementsByClassName('modal');
+    for (let modal of modals) {
+        modal.style.display = 'none';
+    }
+}
+
 // Close modals when clicking outside
 window.onclick = function(event) {
     const modals = document.getElementsByClassName('modal');
